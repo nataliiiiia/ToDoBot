@@ -2,4 +2,4 @@
 
 ToDoListBot bot = new ToDoListBot();
 bot.Start();
-Console.ReadKey();
+while (true) { }
