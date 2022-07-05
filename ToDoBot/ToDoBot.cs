@@ -148,7 +148,7 @@ namespace ToDoBot
                      new[]
                      {
                             new KeyboardButton[] { "Weather forecast", "Holiday today" },
-                            new KeyboardButton[] {"Song of day", "Word of day", "Fact of day" },
+                            new KeyboardButton[] {"Song of day", "Fact of day" },
                             new KeyboardButton[] {"Return"}
                      }
                  )
@@ -243,22 +243,6 @@ namespace ToDoBot
                     return;
                 }
             }
-            else if (message.Text == "Word of day")
-            {
-
-                var result = GetWordOfDay().Result.entries[0];
-                if (result != null)
-                {
-                    string s = result.lexemes[0].senses[0].definition;
-                    await botClient.SendTextMessageAsync(message.Chat.Id, $"The word of day: {result.entry}\nDefinition of this word: {s}");
-                    return;
-                }
-                else
-                {
-                    await botClient.SendTextMessageAsync(message.Chat.Id, "Unexpected error");
-                    return;
-                }
-            } 
             switch (oldMessageText)
             {
                 case "/setcountry":
@@ -330,14 +314,6 @@ namespace ToDoBot
             if (result == null)
                 return null;
             else return result;
-        }
-        public async Task<WordOfDayModel> GetWordOfDay()
-        {
-            var result = await wordOfDayClient.GetWordAsync();
-            if (result == null)
-                return null;
-            else return result;
-
         }
         public async Task<MusicModel> GetMusicUri()
         {
