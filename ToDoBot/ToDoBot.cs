@@ -15,7 +15,6 @@ namespace ToDoBot
         WeatherClient weatherClient = new();
         RandomFactClient randomFactClient = new();
         HolidayInfoClient holidayInfoClient = new();
-        WordOfDayClient wordOfDayClient = new();
         DataBaseClient dataBaseClient = new();
         public string oldMessageText;
         private string _country;
